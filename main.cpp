@@ -15,7 +15,7 @@ void displayCarInfo(Car list[]) {
    int index;
    int listSize = (sizeof(list)/sizeof(list[0]));
    for (index = 0; index < listSize; ++index) {
-      if(list[index].getSold() == false) {
+      if(list[index].getSYear() == 0) {
          list[index].carDetails();
       }//end if
       cout << endl;
