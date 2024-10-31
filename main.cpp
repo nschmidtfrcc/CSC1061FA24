@@ -11,11 +11,13 @@ Process: The function iterates through the list of the cars and displays the inf
 Return: The function displays the information of each individual car in the list
 
 */
-void displayCarInfo(car list[]) {
+void displayCarInfo(Car list[]) {
    int index;
-   int listSize = (sizeof(list)/sizeof(list[0]);
+   int listSize = (sizeof(list)/sizeof(list[0]));
    for (index = 0; index < listSize; ++index) {
-      list[index].carDetails();
+      if(list[index].getSYear() == 0) {
+         list[index].carDetails();
+      }//end if
       cout << endl;
    }//end for
    return;
@@ -94,8 +96,7 @@ int main(int argc, char* argv[]) {
    Car soldCars[10]
    Car unsoldCars[10];
    int userChoice;
-   bool usingProgram = true;
-   double totalSales = 0.0; 
+   double totalSales = 0.0;
    
    //Load in car inventory information
    
