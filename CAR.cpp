@@ -6,19 +6,18 @@
 
 using namespace std;
 
-Car::Car(double price, int year, string make, string model, string available, int vin) {
+Car::Car(double price, int year, string make, string model,bool sold, int vin) {
    carPrice = price;
    carYear = year;
    carMake = make;
    carModel = model;
-   carAvailable = available;
+   carSold = sold;
    carVin = vin;
 }
 
-void Car::displayInfo() {
+void Car::carDetails() {
    cout << "Car Price: $" << carPrice;
    cout << "\nCar Year: " << carYear;
    cout << "\nCar Make and Model: " << carMake << " " << carModel;
-   cout << "\nIs Car Available? " << carAvailable;
    cout << "\nCar VIN: " << carVin;
 }
