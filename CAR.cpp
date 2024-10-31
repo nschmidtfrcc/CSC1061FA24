@@ -16,8 +16,5 @@ Car::Car(double price, int year, string make, string model,bool sold, int vin) {
 }
 
 void Car::carDetails() {
-   cout << "Car Price: $" << carPrice;
-   cout << "\nCar Year: " << carYear;
-   cout << "\nCar Make and Model: " << carMake << " " << carModel;
-   cout << "\nCar VIN: " << carVin;
+   cout << << "Car Year: " << carYear << ". Car Make and Model: " << carMake << " " << carModel << ". Car Price: $" << carPrice << ". Car VIN: " << carVin;
 }
