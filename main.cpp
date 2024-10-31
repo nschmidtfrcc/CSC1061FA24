@@ -15,7 +15,9 @@ void displayCarInfo(Car list[]) {
    int index;
    int listSize = (sizeof(list)/sizeof(list[0]));
    for (index = 0; index < listSize; ++index) {
-      list[index].carDetails();
+      if(list[index].getSold() == false) {
+         list[index].carDetails();
+      }//end if
       cout << endl;
    }//end for
    return;
