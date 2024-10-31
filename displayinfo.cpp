@@ -2,26 +2,26 @@
 
 using namespace std; 
 
+   void displayGrossSales(double totalSales); // void function to display gross sales EP 
+
+   
  int main () { 
+ 
+ // switch () {  
+   
+  // case 5: { 
+      /* 
+      calculation of gross sales 
+      */ 
+      double totalSales = 0.0; 
+      displayGrossSales(totalSales); //calls total gross sales EP
+           // break; 
+    //  } 
 
     }//end main EP
 
-   void car::displayAvailbleCarInfo() { 
-      cout << "availble car will be displayed in the following order: " << endl;
-      cout << "Price, year, make, model, and vin. " << endl; 
-      cout << Price << Year << Make << Model << Vin; 
-      } 
-   void car::displayUnavailbleCarInfo() { 
-      cout << "unavailble car will be displayed in the following order: " << endl;
-      cout << "Price, year, make, model, and vin. " << endl; 
-            cout << Price << Year << Make << Model << Vin; 
-      } 
-    double grossSales () { 
-    double totalSales = 0.0; 
-    for () { 
-    if (car.isSold) { 
-     totalSales += car.price;
-     }//
-     }//
-     return totalSales; 
-     }//end double grossSales 
+   // void function to display final gross sales EP 
+   void displayGrossSales(double totalSales) { 
+     cout << " total gross sales: " << totalSales << endl; 
+           } //end void EP 
+    
