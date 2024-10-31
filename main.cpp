@@ -84,7 +84,6 @@ int main(int argc, char* argv[]) {
    Car soldCars[10]
    Car unsoldCars[10];
    int userChoice;
-   bool usingProgram = true;
    
    //Load in car inventory information
    
