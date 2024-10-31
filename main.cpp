@@ -92,16 +92,21 @@ int main(int argc, char* argv[]) {
    userChoice = displayMenu();
    while((userChoice > 0) && (userChoice < 6)) {
       switch (userChoice) {
+         // Display Available Car Information IS
          case 1:
             displayCarInfo(unsoldCars);
             break;
+         // Display Sold Car Information IS
          case 2:
             displayCarInfo(soldCars);
             break;
+         // Search Available Inventory IS
          case 3:
             break;
+         // Sell Car
          case 4:
             break;
+         // Display Gross Sales
          case 5:
             break;
          default:
