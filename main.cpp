@@ -2,6 +2,24 @@
 #include "car.h"
 using namespace std;
 
+/*     displayCarInfo           --Isaiah Fite--
+Parameters: The function expects a list of cars
+   
+Process: The function iterates through the list of the cars and displays the information 
+   of each individual car in the list. No changes are made to the list
+
+Return: The function displays the information of each individual car in the list
+
+*/
+void displayCarInfo(car list[]) {
+   int index;
+   int listSize = (sizeof(list)/sizeof(list[0]);
+   for (index = 0; index < listSize; ++index) {
+      list[index].carDetails();
+      cout << endl;
+   }//end for
+   return;
+}//end displayCarInfo
 
 /* displayMenu
 Name: Isaac Seyer
@@ -51,23 +69,34 @@ Process: This program will populate two arrays with the information of the unsol
    cars sold during this instance of the program. Then whenever the program is exitted, the inventory of the 
    sold and unsold cars is exportted to external files.
 
-Output:
-
+Output: Each time this program runs the menu is displayed and there is a possiblity for each function to run. Depending 
+   on the functions selected there will be a different output. From the different functions you can expect:
+   A list of car information when you display the information of sold or unsold cars.
+   Prompts for the type of search and a display of the search result when searching for a car.
+   Prompts the user for the to be sold car's VIN number as well as conformation or not for whether the car has been sold.
+   when using the sell car functionality.
+   Then a display of the gross sales for the day when gross sales is selected.
+   Output will cease as soon as the program is exited in the main menu by the user.
 */
 
 int main(int argc, char* argv[]) {
    //Declarations IF
+   Car soldCars[10]
+   Car unsoldCars[10];
    int userChoice;
    bool usingProgram = true;
    
    //Load in car inventory information
    
-   //Display menu
-   while(usingProgram) {
-      switch (displayMenu()) {
+   //Display menu and functionality selection
+   userChoice = displayMenu();
+   while((userChoice > 0) && (userChoice < 6)) {
+      switch (userChoice) {
          case 1:
+            displayCarInfo(unsoldCars);
             break;
          case 2:
+            displayCarInfo(soldCars);
             break;
          case 3:
             break;
@@ -75,19 +104,12 @@ int main(int argc, char* argv[]) {
             break;
          case 5:
             break;
-         case 6:
-            usingProgram = false;
-            break;
          default:
-            cout << "displayMenu returned an integer that was not a selection" << endl;
-            usingProgram = false;
+            cout << "This is an unacceptable selection." << endl;
             break;
       }//end switch
+      userChoice = displayMenu();      //redisplay menu and update the selection
    }//end while
-   
-
-   
-   //repeat
    
    //export car inventory information
 
