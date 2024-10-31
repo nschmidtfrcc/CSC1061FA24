@@ -11,9 +11,9 @@ Process: The function iterates through the list of the cars and displays the inf
 Return: The function displays the information of each individual car in the list
 
 */
-void displayCarInfo(car list[]) {
+void displayCarInfo(Car list[]) {
    int index;
-   int listSize = (sizeof(list)/sizeof(list[0]);
+   int listSize = (sizeof(list)/sizeof(list[0]));
    for (index = 0; index < listSize; ++index) {
       list[index].carDetails();
       cout << endl;
