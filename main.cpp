@@ -21,16 +21,6 @@ void displayCarInfo(car list[]) {
    return;
 }//end displayCarInfo
 
- /*
-   parameter: contain totalSales EP
-   prossess: will get called and will display the final total gross sales EP 
-   return value: it will return the final gross sale EP 
-   */ 
-   void displayGrossSales(double totalSales) { // void function to display gross sales EP 
-   cout << " total gross sales: " << totalSales << endl; 
-           } //end void EP 
-
-
 /* displayMenu
 Name: Isaac Seyer
 
@@ -95,7 +85,6 @@ int main(int argc, char* argv[]) {
    Car unsoldCars[10];
    int userChoice;
    bool usingProgram = true;
-   double totalSales = 0.0; 
    
    //Load in car inventory information
    
@@ -119,7 +108,6 @@ int main(int argc, char* argv[]) {
             break;
          // Display Gross Sales
          case 5:
-            displayGrossSales(totalSales); //calls total gross sales EP
             break;
          default:
             cout << "This is an unacceptable selection." << endl;
