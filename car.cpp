@@ -7,6 +7,7 @@
 using namespace std;
 
 Car::Car(double price, int year, string make, string model,bool sold, int vin) {
+
    carPrice = price;
    carYear = year;
    carMake = make;
