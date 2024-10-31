@@ -24,14 +24,14 @@ int menuDisplay() {
    cout << "4. Sell Car" << endl;
    cout << "5. Display Gross Sales" << endl;
    cout << "6. Exit Program" << endl;
-   
-   //get user input, then checks if it is valid IS
    cout << "Enter choice as integer: ";
+   //get user input, then checks if it is valid IS
    cin >> choice;
-   while (choice < 1 || choice > 6) {
-      cout <<"Please enter an integer 1-6" << endl;
+   while ((choice < 1 ) || (choice > 6)) {
+      cout << "Please enter an integer 1-6" << endl;
       cin >> choice;
    }// end while IS
+   
    return choice;
 
 }// end menuDisplay IS
