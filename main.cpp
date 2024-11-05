@@ -93,7 +93,7 @@ Output: Each time this program runs the menu is displayed and there is a possibl
 
 int main(int argc, char* argv[]) {
    //Declarations IF
-   Car soldCars[10]
+   Car soldCars[10];
    Car unsoldCars[10];
    int userChoice;
    double totalSales = 0.0;
