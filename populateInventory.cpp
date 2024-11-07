@@ -3,28 +3,25 @@
 #include <string>
 #include "car.h"
 using namespace std;
-
+//PopulateInventory: Lexi Cocaign
+//Input:Gets array from main to put info into-LC
+ //Process: Opens file and puts info from file into object that then gets added to the array -LC
+ // Output: function returns void -LC
 void PopulateInventory(Car unsoldCars[]) {
-  //Input:Gets array from main to put info into-LC
-  //Process: Opens file and puts info from file into object that then gets added to the array -LC
-  // Output: function returns void -LC
   //Declarations-LC
   ifstream inFS;
-  int currIndex = 0;
-  string priceString;
-  string yearString;
+  int currIndex = 0, year = 0;
   double price = 0;
-  int year = 0;
-  string make;
-  string model;
-  string vin;
+  string make , model, vin, loopCount, yearString, priceString;
 //Open car inventory file to get input from-LC
   inFS.open("CarInventory.txt");
   //Check if file opened successfully -LC
   if(!inFS.is_open()){
     cout << "Could not open CarInventory.txt" << endl;
   }//end if
-  while(!inFS.eof()){
+  //loopCount variable to
+  getline(inFS, loopCount);
+  while(loopCount.sizeof() != 0){
       //get info from file and convert strings into nums if needed-LC
     getline(inFS,priceString);
     price = stod(priceString);
@@ -39,6 +36,9 @@ void PopulateInventory(Car unsoldCars[]) {
     unsoldCars[currIndex] = currCar;
     //Increment currIndex for next iteration of loop -LC
     currIndex += 1;
+
   }//end while
+  //close file when done-LC
+  inFS.close();
   return;
 }//end PopulateInventory
