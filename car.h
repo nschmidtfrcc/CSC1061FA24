@@ -20,6 +20,7 @@ class Car {
       string getModel();
       void setSold(bool sold);
       bool getSold();
+      void setVin(int vin);
       int getVin();
    private:
       double carPrice;
@@ -28,6 +29,6 @@ class Car {
       string carModel;
       bool carSold;
       int carVin;
-};
+};//end Car class. JK
 
 #endif
