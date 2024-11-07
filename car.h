@@ -22,7 +22,7 @@ class Car {
       bool getSold();
       int getVin();
    private:
-      int carPrice;
+      double carPrice;
       int carYear;
       string carMake;
       string carModel;
