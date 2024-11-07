@@ -23,7 +23,7 @@ Car::Car(double price, int year, string make, string model,bool sold, int vin) {
    carVin = vin;
 }
 
-void Car::setPrice(int price) {
+void Car::setPrice(double price) {
    carPrice = price;
 }
 int Car::getPrice() {
