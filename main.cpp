@@ -15,7 +15,7 @@ void displayCarInfo(Car list[]) {
    int index;
    int listSize = (sizeof(list)/sizeof(list[0]));
    for (index = 0; index < listSize; ++index) {
-      if(list[index].getSYear() == 0) {
+      if(list[index].getYear() == 0) {
          list[index].carDetails();
       }//end if
       cout << endl;
@@ -83,7 +83,7 @@ Output: Each time this program runs the menu is displayed and there is a possibl
 
 int main(int argc, char* argv[]) {
    //Declarations IF
-   Car soldCars[10]
+   Car soldCars[10];
    Car unsoldCars[10];
    int userChoice;
    double totalSales = 0.0;

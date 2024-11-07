@@ -24,22 +24,27 @@ Ford
 Transit Connect
 1932414104
 $35,000
+1984
 Toyota
 AE86
 2835110898
 $20,250
+2017
 Jeep
 Wrangler
 7611073156
 $30,500
 Ford
+2015
 F-150
 7959682364
 $52,000
+2022
 Cadillac
 Escalade
 678310710621
 $22,500
+2020
 Tesla
 Model S
 4321872974
