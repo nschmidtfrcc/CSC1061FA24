@@ -9,7 +9,7 @@ class Car {
    public:
 
       Car();
-      Car(double price, int year, string make, string model, bool sold, int vin);
+      Car(double price, int year, string make, string model, bool sold, string vin);
       void carDetails();
       void setPrice(double price);
       double getPrice();
@@ -21,14 +21,15 @@ class Car {
       string getModel();
       void setSold(bool sold);
       bool getSold();
-      int getVin();
+      void setVin(string vin);
+      string getVin();
    private:
       double carPrice;
       int carYear;
       string carMake;
       string carModel;
       bool carSold;
-      int carVin;
-};
+      string carVin;
+};//end Car class. JK
 
 #endif
