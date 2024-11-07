@@ -13,9 +13,9 @@ Return: The function displays the information of each individual car in the list
 */
 void displayCarInfo(Car list[]) {
    int index;
-   int listSize = (sizeof(list)/sizeof(list[0]));
-   for (index = 0; index < listSize; ++index) {
-      if(list[index].getYear() == 0) {
+   //int listSize = (sizeof(list)/sizeof(list[0])); Dynamic list sizing is not working for now
+   for (index = 0; index < 10; ++index) {//Hardcoded listSize for now
+      if(list[index].getYear() != 0) {
          list[index].carDetails();
       }//end if
       cout << endl;
