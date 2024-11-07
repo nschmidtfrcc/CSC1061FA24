@@ -23,15 +23,15 @@ void displayCarInfo(Car list[]) {
    return;
 }//end displayCarInfo
 
-   /*
-   displayGrossSales --Emilio Pinales-- 
-   parameter: contain totalSales EP
-   prossess: will get called and will display the final total gross sales EP 
-   return value: it will return the final gross sale EP 
-   */ 
-   void displayGrossSales(double totalSales) { // void function to display gross sales EP 
-      cout << " Total Gross Sales: " << totalSales << endl; 
-   } //end void EP 
+/*
+displayGrossSales --Emilio Pinales-- 
+parameter: contain totalSales EP
+prossess: will get called and will display the final total gross sales EP 
+return value: it will return the final gross sale EP 
+*/ 
+void displayGrossSales(double totalSales) { // void function to display gross sales EP 
+   cout << " Total Gross Sales: " << totalSales << endl << endl; 
+} //end void EP 
 
 
 /* displayMenu
