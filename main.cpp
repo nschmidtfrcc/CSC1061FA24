@@ -217,6 +217,7 @@ int main(int argc, char* argv[]) {
    double totalSales = 0.0;
    
    //Load in car inventory information
+   PopulateInventory(unsoldCars);
    
    //Display menu and functionality selection
    userChoice = displayMenu();
@@ -232,6 +233,7 @@ int main(int argc, char* argv[]) {
             break;
          // Search Available Inventory IS
          case 3:
+            searchInventory(unsoldCars, 10);
             break;
          // Sell Car
          case 4:
