@@ -7,6 +7,7 @@ using namespace std;
 
 class Car {
    public:
+
       Car();
       Car(double price, int year, string make, string model, bool sold, int vin);
       void carDetails();
