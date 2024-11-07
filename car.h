@@ -8,10 +8,10 @@ using namespace std;
 class Car {
    public:
       Car();
-      Car(int price, int year, string make, string model, bool sold, int vin);
+      Car(double price, int year, string make, string model, bool sold, int vin);
       void carDetails();
-      void setPrice(int price);
-      int getPrice();
+      void setPrice(double price);
+      double getPrice();
       void setYear(int year);
       int getYear();
       void setMake(string make);
