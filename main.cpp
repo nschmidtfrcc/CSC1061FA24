@@ -28,8 +28,8 @@ void displayCarInfo(car list[]) {
    return value: it will return the final gross sale EP 
    */ 
    void displayGrossSales(double totalSales) { // void function to display gross sales EP 
-   cout << " Total Gross Sales: " << totalSales << endl; 
-           } //end void EP 
+      cout << " Total Gross Sales: " << totalSales << endl; 
+   } //end void EP 
 
 
 /* displayMenu
