@@ -7,14 +7,19 @@ using namespace std;
 
 class Car {
    public:
-      Car(int price, int year, string make, string model, string available, int vin);
-      void displayInfo();
+      Car(int price, int year, string make, string model, bool sold, int vin);
+      void carDetails();
+      int getPrice();
+      int getYear();
+      string getMake();
+      string getModel();
+      int getVin();
    private:
       int carPrice;
       int carYear;
       string carMake;
       string carModel;
-      string available;
+      bool carSold;
       int carVin;
 };
 
