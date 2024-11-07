@@ -36,5 +36,5 @@ int Car::getVin() {
    return carVin;
 }
 void Car::carDetails() {
-   cout << << "Car Year: " << carYear << ". Car Make and Model: " << carMake << " " << carModel << ". Car Price: $" << carPrice << ". Car VIN: " << carVin;
+   cout << "Car Year: " << carYear << ". Car Make and Model: " << carMake << " " << carModel << ". Car Price: $" << carPrice << ". Car VIN: " << carVin;
 }
