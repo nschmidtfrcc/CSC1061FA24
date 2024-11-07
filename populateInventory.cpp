@@ -13,12 +13,11 @@ void PopulateInventory(Car unsoldCars[]) {
   int currIndex = 0;
   string priceString;
   string yearString;
-  string vinString;
-  int price = 0;
+  double price = 0;
   int year = 0;
   string make;
   string model;
-  int vin;
+  string vin;
 //Open car inventory file to get input from-LC
   inFS.open("CarInventory.txt");
   //Check if file opened successfully -LC
@@ -28,13 +27,12 @@ void PopulateInventory(Car unsoldCars[]) {
   while(!inFS.eof()){
       //get info from file and convert strings into nums if needed-LC
     getline(inFS,priceString);
-    price = stoi(priceString);
+    price = stod(priceString);
     getline(inFS,yearString);
     year = stoi(yearString);
     getline(inFS,make);
     getline(inFS,model);
-    getline(inFS, vinString);
-    vin = stoi(vinString);
+    getline(inFS, vin);
     //creates car variable to store data in-LC
     Car currCar(price, year, make, model, true, vin);
     //car gets put into the array at currIndex-LC
