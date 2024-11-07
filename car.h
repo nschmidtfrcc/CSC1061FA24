@@ -10,9 +10,13 @@ class Car {
       Car();
       Car(int price, int year, string make, string model, bool sold, int vin);
       void carDetails();
+      void setPrice(int price);
       int getPrice();
+      void setYear(int year);
       int getYear();
+      void setMake(string make);
       string getMake();
+      void setModel(string model);
       string getModel();
       void setSold(bool sold);
       bool getSold();
