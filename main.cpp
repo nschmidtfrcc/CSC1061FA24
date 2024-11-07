@@ -23,6 +23,7 @@ void displayCarInfo(Car list[]) {
    return;
 }//end displayCarInfo
 
+
 /*
 displayGrossSales --Emilio Pinales-- 
 parameter: contain totalSales EP
@@ -240,7 +241,6 @@ int main(int argc, char* argv[]) {
             break;
          // Display Gross Sales
          case 5:
-            displayGrossSales(totalSales); //calls total gross sales EP
             break;
          default:
             cout << "This is an unacceptable selection." << endl;
