@@ -11,11 +11,13 @@ Process: The function iterates through the list of the cars and displays the inf
 Return: The function displays the information of each individual car in the list
 
 */
-void displayCarInfo(car list[]) {
+void displayCarInfo(Car list[]) {
    int index;
-   int listSize = (sizeof(list)/sizeof(list[0]);
+   int listSize = (sizeof(list)/sizeof(list[0]));
    for (index = 0; index < listSize; ++index) {
-      list[index].carDetails();
+      if(list[index].getYear() == 0) {
+         list[index].carDetails();
+      }//end if
       cout << endl;
    }//end for
    return;
@@ -92,11 +94,10 @@ Output: Each time this program runs the menu is displayed and there is a possibl
 
 int main(int argc, char* argv[]) {
    //Declarations IF
-   Car soldCars[10]
+   Car soldCars[10];
    Car unsoldCars[10];
    int userChoice;
-   bool usingProgram = true;
-   double totalSales = 0.0; 
+   double totalSales = 0.0;
    
    //Load in car inventory information
    
@@ -104,16 +105,21 @@ int main(int argc, char* argv[]) {
    userChoice = displayMenu();
    while((userChoice > 0) && (userChoice < 6)) {
       switch (userChoice) {
+         // Display Available Car Information IS
          case 1:
             displayCarInfo(unsoldCars);
             break;
+         // Display Sold Car Information IS
          case 2:
             displayCarInfo(soldCars);
             break;
+         // Search Available Inventory IS
          case 3:
             break;
+         // Sell Car
          case 4:
             break;
+         // Display Gross Sales
          case 5:
             displayGrossSales(totalSales); //calls total gross sales EP
             break;
