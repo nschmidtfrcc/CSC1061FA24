@@ -241,6 +241,7 @@ int main(int argc, char* argv[]) {
             break;
          // Display Gross Sales
          case 5:
+            displayGrossSales(totalSales);
             break;
          default:
             cout << "This is an unacceptable selection." << endl;
