@@ -39,6 +39,7 @@ void Car::setPrice(double price) {
 //Input: The private car's price variable.
 //Process: Return the car's price back to the user.
 //Output: The car's price.
+
 double Car::getPrice() {
    return carPrice;
 }//end getPrice(). JK
