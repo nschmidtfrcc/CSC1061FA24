@@ -14,13 +14,13 @@ Car::Car() {
    carMake = "X";
    carModel = "X";
    carSold = true;
-   carVin = 0;
+   carVin = "X";
 }//end default constructor. JK
 
 //Input: The car's price, year, make, model, whether it is sold or not, and its VIN.
 //Process: Set the private variables for price, year, make, model, sold, and VIN with its corresponding parameters.
 //Output: The private variables for price, year, make, model, sold, and VIN
-Car::Car(double price, int year, string make, string model,bool sold, int vin) {
+Car::Car(double price, int year, string make, string model,bool sold, string vin) {
    carPrice = price;
    carYear = year;
    carMake = make;
@@ -102,14 +102,14 @@ bool Car::getSold() {
 //Input: The car's VIN.
 //Process: Set the private variable carVin to be the inputted vin variable.
 //Output: The carVin variable to the rest of the Car class.
-void Car::setVin(int vin) {
+void Car::setVin(string vin) {
    carVin = vin;
 }//end setVin(). JK
 
 //Input: The private carVin variable
 //Process: Return the carVin variable back to the user.
 //Output: the carVin variable
-int Car::getVin() {
+string Car::getVin() {
    return carVin;
 }//end getVin(). JK
 
