@@ -26,7 +26,7 @@ Car::Car(double price, int year, string make, string model,bool sold, int vin) {
 void Car::setPrice(double price) {
    carPrice = price;
 }
-int Car::getPrice() {
+double Car::getPrice() {
    return carPrice;
 }
 
