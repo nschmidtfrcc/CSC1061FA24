@@ -165,7 +165,7 @@ void PopulateInventory(Car unsoldCars[]) {
   }//end if
   //loopCount variable to
   getline(inFS, loopCount);
-  while(loopCount.sizeof() != 0){
+  while(loopCount.size() != 0){
       //get info from file and convert strings into nums if needed-LC
     getline(inFS,priceString);
     price = stod(priceString);
@@ -180,7 +180,7 @@ void PopulateInventory(Car unsoldCars[]) {
     unsoldCars[currIndex] = currCar;
     //Increment currIndex for next iteration of loop -LC
     currIndex += 1;
-
+    getline(inFS,loopCount);
   }//end while
   //close file when done-LC
   inFS.close();
