@@ -29,7 +29,8 @@ void PopulateInventory(Car unsoldCars[]) {
     year = stoi(yearString);
     getline(inFS,make);
     getline(inFS,model);
-    getline(inFS, vin);
+    getline(inFS,vin);
+    getline(inFS, loopCount);
     //creates car variable to store data in-LC
     Car currCar(price, year, make, model, true, vin);
     //car gets put into the array at currIndex-LC
