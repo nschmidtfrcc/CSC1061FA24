@@ -21,7 +21,7 @@ void PopulateInventory(Car unsoldCars[]) {
   }//end if
   //loopCount variable to
   getline(inFS, loopCount);
-  while(loopCount.sizeof() != 0){
+  while(loopCount.size() != 0){
       //get info from file and convert strings into nums if needed-LC
     getline(inFS,priceString);
     price = stod(priceString);
@@ -29,7 +29,8 @@ void PopulateInventory(Car unsoldCars[]) {
     year = stoi(yearString);
     getline(inFS,make);
     getline(inFS,model);
-    getline(inFS, vin);
+    getline(inFS,vin);
+    getline(inFS, loopCount);
     //creates car variable to store data in-LC
     Car currCar(price, year, make, model, true, vin);
     //car gets put into the array at currIndex-LC
