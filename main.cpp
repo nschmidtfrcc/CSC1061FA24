@@ -19,8 +19,8 @@ void displayCarInfo(Car list[]) {
    for (index = 0; index < 10; ++index) {//Hardcoded listSize for now
       if(list[index].getYear() != 0) {
          list[index].carDetails();
+         cout << endl;
       }//end if
-      cout << endl;
    }//end for
    return;
 }//end displayCarInfo
