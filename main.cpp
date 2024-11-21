@@ -229,6 +229,7 @@ int main(int argc, char* argv[]) {
     Car unsoldCars[10];
     int userChoice;
     double totalSales = 0.0;
+    int addIndex = 0;
 
     //Load in car inventory information
     PopulateInventory(unsoldCars);
