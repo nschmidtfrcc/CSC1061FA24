@@ -192,6 +192,7 @@ void PopulateInventory(Car unsoldCars[]) {
   return;
 }//end PopulateInventory
 
+double sellCar(Car unsoldCars[], Car soldCars[], int& addIndex);
 
 /*     CarDealershipMain
 Input: The program will expect numbers as input to traverse the menus and reach the desired function. 
@@ -246,8 +247,8 @@ int main(int argc, char* argv[]) {
             searchInventory(unsoldCars, 10);
             break;
          // Sell Car
-         case 4:
-            sellCar(unsoldCars, soldCars, addIndex);
+           case 4:
+            totalSales += sellCar(unsoldCars, soldCars, addIndex);
             break;
          // Display Gross Sales
          case 5:
@@ -272,16 +273,17 @@ int main(int argc, char* argv[]) {
 //Output: This function will display a sentence asking the user to input the VIN for the car they would like to sell and if that VIN couldn't be found, display a warning stating
 //that the car isn't available or was inputted incorrectly.
 
-void sellCar(Car unsoldCars[], Car soldCars[], int& addIndex) {
+double sellCar(Car unsoldCars[], Car soldCars[], int& addIndex) {
    int sellIndex = 0;
    int size = 10;
    bool found = false;
+   double price = 0;
    Car emptyCar;
    string vin = "";
    cout << "Please enter the VIN of the car you wish to sell\n";
    cin >> vin;
    for (int i = 0; i < size; ++i) {
-      if (soldCars[i].getVin() == vin) {
+      if (unsoldCars[i].getVin() == vin) {
             sellIndex = i;
             found = true;
       }//end if statement. JK
@@ -292,8 +294,9 @@ void sellCar(Car unsoldCars[], Car soldCars[], int& addIndex) {
    //call search inventory when it's finished. JK
    if (addIndex <= 10) {
       soldCars[addIndex] = unsoldCars[sellIndex];
-      totalSales += unsoldCars[sellIndex].getPrice(); // Update gross sales
+      price = unsoldCars[sellIndex].getPrice();
       ++addIndex;
    }//end if statement. JK
    unsoldCars[sellIndex] = emptyCar;
+   return price;
 }//end sellCar(). JK
