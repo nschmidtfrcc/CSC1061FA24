@@ -39,38 +39,6 @@ void displayGrossSales(double totalSales) { // void function to display gross sa
 } //end void EP 
 
 
-/* displayMenu
-Name: Isaac Seyer
-
-Input: The user will input an integer between 1 and 6 (inclusive) to choose an option
-
-Process: The function first initializes the variable to store the user's choice, then displays the menu. The function then asks for 
-the user's input and checks if it is a valid answer. If it is not, the function asks for the user's input again and clarifies what 
-are valid inputs, then checks again. If the input is valid, it returns the user's input;
-
-Output: an integer ranging from 1-6 (inclusive)
-*/
-int displayMenu() {
-   // variable for user input IS
-   int choice = 0;
-   // following six lines display menu IS
-   cout << "1. Display Available Car Information" << endl;
-   cout << "2. Display Sold Car Information" << endl;
-   cout << "3. Search Available Inventory" << endl;
-   cout << "4. Sell Car" << endl;
-   cout << "5. Display Gross Sales" << endl;
-   cout << "6. Exit Program" << endl;
-   cout << "Enter choice as integer: ";
-   //get user input, then checks if it is valid IS
-   cin >> choice;
-   while ((choice < 1 ) || (choice > 6)) {
-      cout << "Please enter an integer 1-6" << endl;
-      cin >> choice;
-   }// end while IS
-   
-   return choice;
-
-}// end menuDisplay IS
 
 /*
    searchInventory --Maria Lazarski--
@@ -79,17 +47,19 @@ int displayMenu() {
    Return: It prints the details of the cars that match the search criteria.
 */
 
-void searchInventory(Car list[], int size) {
+void searchInventory(Car list[]) {
     int searchChoice;
-    string searchMake, searchModel;
+    string searchMake, searchModel, searchVin;
     int searchYear;
-
+    int size = 10;
+    bool found = false;
     // Ask the user for the search criterion
     cout << "Search by: " << endl;
     cout << "1. Make" << endl;
     cout << "2. Model" << endl;
     cout << "3. Year" << endl;
-    cout << "Enter choice (1-3): ";
+    cout << "4. VIN" << endl;
+    cout << "Enter choice (1-4): ";
     cin >> searchChoice;
 
     if (searchChoice == 1) {
@@ -97,18 +67,13 @@ void searchInventory(Car list[], int size) {
         cout << "Enter car make: ";
         cin.ignore();  // To ignore any leftover newline character
         getline(cin, searchMake);
-
-        bool found = false;
+        //Iterates through the list to find searched for car
         for (int i = 0; i < size; ++i) {
             if (list[i].getMake() == searchMake) {
                 list[i].carDetails();
                 found = true;
-            }
-        }
-
-        if (!found) {
-            cout << "No cars found for make: " << searchMake << endl;
-        }
+            }//end if
+        }//end for
 
     }
     else if (searchChoice == 2) {
@@ -116,30 +81,23 @@ void searchInventory(Car list[], int size) {
         cout << "Enter car model: ";
         cin.ignore();  // To ignore any leftover newline character
         getline(cin, searchModel);
-
-        bool found = false;
+        //Iterates through the list to find searched for car
         for (int i = 0; i < size; ++i) {
             if (list[i].getModel() == searchModel) {
                 list[i].carDetails();
                 found = true;
-            }
-        }
-
-        if (!found) {
-            cout << "No cars found for model: " << searchModel << endl;
-        }
-
-    } else if (searchChoice == 3) {
+            }//end if
+        }//end for
+    }//end else if
+    else if (searchChoice == 3) {
         // Search by year
         cout << "Enter car year: ";
         cin >> searchYear;
-
-        bool found = false;
+        //Iterates through the list to find searched for car
         for (int i = 0; i < size; ++i) {
             if (list[i].getYear() == searchYear) {
                 list[i].carDetails();
                 found = true;
-
             }//end if
         }//end for
     }//end else if
