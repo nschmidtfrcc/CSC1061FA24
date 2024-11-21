@@ -292,6 +292,7 @@ void sellCar(Car unsoldCars[], Car soldCars[], int& addIndex) {
    //call search inventory when it's finished. JK
    if (addIndex <= 10) {
       soldCars[addIndex] = unsoldCars[sellIndex];
+      totalSales += unsoldCars[sellIndex].getPrice(); // Update gross sales
       ++addIndex;
    }//end if statement. JK
    unsoldCars[sellIndex] = emptyCar;
