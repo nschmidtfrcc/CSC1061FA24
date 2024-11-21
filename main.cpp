@@ -25,7 +25,6 @@ void displayCarInfo(Car list[]) {
    return;
 }//end displayCarInfo
 
-
 /*
 displayGrossSales --Emilio Pinales-- 
 parameter: contain totalSales EP
@@ -151,7 +150,6 @@ int displayMenu() {
 
 }// end menuDisplay IS
 
-
 //PopulateInventory: Lexi Cocaign
 //Input:Gets array from main to put info into-LC
  //Process: Opens file and puts info from file into object that then gets added to the array -LC
@@ -179,6 +177,7 @@ void PopulateInventory(Car unsoldCars[]) {
     getline(inFS,make);
     getline(inFS,model);
     getline(inFS, vin);
+
     //creates car variable to store data in-LC
     Car currCar(price, year, make, model, true, vin);
     //car gets put into the array at currIndex-LC
@@ -186,11 +185,13 @@ void PopulateInventory(Car unsoldCars[]) {
     //Increment currIndex for next iteration of loop -LC
     currIndex += 1;
     getline(inFS,loopCount);
+
   }//end while
   //close file when done-LC
   inFS.close();
   return;
 }//end PopulateInventory
+
 
 /*     CarDealershipMain
 Input: The program will expect numbers as input to traverse the menus and reach the desired function. 
@@ -223,6 +224,7 @@ int main(int argc, char* argv[]) {
    Car unsoldCars[10];
    int userChoice;
    double totalSales = 0.0;
+   int addIndex = 0;
    
    //Load in car inventory information
    PopulateInventory(unsoldCars);
@@ -245,6 +247,7 @@ int main(int argc, char* argv[]) {
             break;
          // Sell Car
          case 4:
+            sellCar(unsoldCars, soldCars, addIndex);
             break;
          // Display Gross Sales
          case 5:
@@ -260,3 +263,37 @@ int main(int argc, char* argv[]) {
    //export car inventory information
 
 }//end main
+
+//Jason Klaw and Emilio Pinales
+//Input: This function will take the VIN of the car that the user would like to sell from the user. The function will also take the unsoldCars, soldCars, and addIndex from the main program itself.
+//Process: Going through the unsold cars array, this function will check for the VIN that the user has inputted and if the VIN is found, then the sellIndex is given the value of the index
+//That the VIN was found at. If not, the user will be told that it was an incorrect input. After that, the sold car will be added to the soldCars array at the addIndex index
+//Then the sold car's location in the unsoldCars index is turned into an empty object.
+//Output: This function will display a sentence asking the user to input the VIN for the car they would like to sell and if that VIN couldn't be found, display a warning stating
+//that the car isn't available or was inputted incorrectly.
+
+void sellCar(Car unsoldCars[], Car soldCars[], int& addIndex) {
+   int sellIndex = 0;
+   int size = 10;
+   bool found = false;
+   Car emptyCar;
+   string vin = "";
+   cout << "Please enter the VIN of the car you wish to sell\n";
+   cin >> vin;
+   for (int i = 0; i < size; ++i) {
+      if (soldCars[i].getVin() == vin) {
+            sellIndex = i;
+            found = true;
+      }//end if statement. JK
+   }//end for statement. JK
+   if (! found) {
+      cout << "That car isn't available or was incorrectly entered!\n";
+   }//end if statement. JK
+   //call search inventory when it's finished. JK
+   if (addIndex <= 10) {
+      soldCars[addIndex] = unsoldCars[sellIndex];
+      totalSales += unsoldCars[sellIndex].getPrice(); // Update gross sales
+      ++addIndex;
+   }//end if statement. JK
+   unsoldCars[sellIndex] = emptyCar;
+}//end sellCar(). JK
