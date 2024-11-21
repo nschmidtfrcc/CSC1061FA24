@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "car.h"
 using namespace std;
 
@@ -13,9 +14,9 @@ Return: The function displays the information of each individual car in the list
 */
 void displayCarInfo(Car list[]) {
    int index;
-   int listSize = (sizeof(list)/sizeof(list[0]));
-   for (index = 0; index < listSize; ++index) {
-      if(list[index].getYear() == 0) {
+   //int listSize = (sizeof(list)/sizeof(list[0])); Dynamic list sizing is not working for now
+   for (index = 0; index < 10; ++index) {//Hardcoded listSize for now
+      if(list[index].getYear() != 0) {
          list[index].carDetails();
       }//end if
       cout << endl;
@@ -23,14 +24,16 @@ void displayCarInfo(Car list[]) {
    return;
 }//end displayCarInfo
 
- /*
-   parameter: contain totalSales EP
-   prossess: will get called and will display the final total gross sales EP 
-   return value: it will return the final gross sale EP 
-   */ 
-   void displayGrossSales(double totalSales) { // void function to display gross sales EP 
-   cout << " total gross sales: " << totalSales << endl; 
-           } //end void EP 
+
+/*
+displayGrossSales --Emilio Pinales-- 
+parameter: contain totalSales EP
+prossess: will get called and will display the final total gross sales EP 
+return value: it will return the final gross sale EP 
+*/ 
+void displayGrossSales(double totalSales) { // void function to display gross sales EP 
+   cout << " Total Gross Sales: " << totalSales << endl << endl; 
+} //end void EP 
 
 
 /* displayMenu
@@ -66,6 +69,127 @@ int displayMenu() {
 
 }// end menuDisplay IS
 
+/*
+   searchInventory --Maria Lazarski--
+   Parameters: The function expects an array of cars (either unsold or sold) and a search criterion (make, model, or year).
+   Process: The function loops through the array of cars and compares the search criterion with the car's properties.
+   Return: It prints the details of the cars that match the search criteria.
+*/
+
+void searchInventory(Car list[], int size) {
+    int searchChoice;
+    string searchMake, searchModel;
+    int searchYear;
+
+    // Ask the user for the search criterion
+    cout << "Search by: " << endl;
+    cout << "1. Make" << endl;
+    cout << "2. Model" << endl;
+    cout << "3. Year" << endl;
+    cout << "Enter choice (1-3): ";
+    cin >> searchChoice;
+
+    if (searchChoice == 1) {
+        // Search by make
+        cout << "Enter car make: ";
+        cin.ignore();  // To ignore any leftover newline character
+        getline(cin, searchMake);
+
+        bool found = false;
+        for (int i = 0; i < size; ++i) {
+            if (list[i].getMake() == searchMake) {
+                list[i].carDetails();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            cout << "No cars found for make: " << searchMake << endl;
+        }
+
+    } else if (searchChoice == 2) {
+        // Search by model
+        cout << "Enter car model: ";
+        cin.ignore();  // To ignore any leftover newline character
+        getline(cin, searchModel);
+
+        bool found = false;
+        for (int i = 0; i < size; ++i) {
+            if (list[i].getModel() == searchModel) {
+                list[i].carDetails();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            cout << "No cars found for model: " << searchModel << endl;
+        }
+
+    } else if (searchChoice == 3) {
+        // Search by year
+        cout << "Enter car year: ";
+        cin >> searchYear;
+
+        bool found = false;
+        for (int i = 0; i < size; ++i) {
+            if (list[i].getYear() == searchYear) {
+                list[i].carDetails();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            cout << "No cars found for year: " << searchYear << endl;
+        }
+
+    } else {
+        cout << "Invalid search choice. Please enter 1, 2, or 3." << endl;
+    }
+}// ends search function
+
+
+//PopulateInventory: Lexi Cocaign
+//Input:Gets array from main to put info into-LC
+ //Process: Opens file and puts info from file into object that then gets added to the array -LC
+ // Output: function returns void -LC
+void PopulateInventory(Car unsoldCars[]) {
+  //Declarations-LC
+  ifstream inFS;
+  int currIndex = 0, year = 0;
+  double price = 0;
+  string make , model, vin, loopCount, yearString, priceString;
+//Open car inventory file to get input from-LC
+  inFS.open("CarInventory.txt");
+  //Check if file opened successfully -LC
+  if(!inFS.is_open()){
+    cout << "Could not open CarInventory.txt" << endl;
+  }//end if
+  //loopCount variable to
+  getline(inFS, loopCount);
+  while(loopCount.size() != 0){
+      //get info from file and convert strings into nums if needed-LC
+    getline(inFS,priceString);
+    price = stod(priceString);
+    getline(inFS,yearString);
+    year = stoi(yearString);
+    getline(inFS,make);
+    getline(inFS,model);
+    getline(inFS, vin);
+    getline(inFS, loopCount);
+    //creates car variable to store data in-LC
+    Car currCar(price, year, make, model, true, vin);
+    //car gets put into the array at currIndex-LC
+    unsoldCars[currIndex] = currCar;
+    //Increment currIndex for next iteration of loop -LC
+    currIndex += 1;
+
+  }//end while
+  //close file when done-LC
+  inFS.close();
+  return;
+}//end PopulateInventory
+
+void sellCar(Car unsoldCars[], Car soldCars[], int& addIndex);
 /*     CarDealershipMain
 Input: The program will expect numbers as input to traverse the menus and reach the desired function. 
    Then the user will be prompted for specific input within each function. Input required in the search functionality 
@@ -97,8 +221,10 @@ int main(int argc, char* argv[]) {
    Car unsoldCars[10];
    int userChoice;
    double totalSales = 0.0;
+   int addIndex = 0;
    
    //Load in car inventory information
+   PopulateInventory(unsoldCars);
    
    //Display menu and functionality selection
    userChoice = displayMenu();
@@ -114,13 +240,15 @@ int main(int argc, char* argv[]) {
             break;
          // Search Available Inventory IS
          case 3:
+            searchInventory(unsoldCars, 10);
             break;
          // Sell Car
          case 4:
+            sellCar(unsoldCars, soldCars, addIndex);
             break;
          // Display Gross Sales
          case 5:
-            displayGrossSales(totalSales); //calls total gross sales EP
+            displayGrossSales(totalSales);
             break;
          default:
             cout << "This is an unacceptable selection." << endl;
@@ -132,3 +260,36 @@ int main(int argc, char* argv[]) {
    //export car inventory information
 
 }//end main
+
+//Jason Klaw and Emilio Pinales
+//Input: This function will take the VIN of the car that the user would like to sell from the user. The function will also take the unsoldCars, soldCars, and addIndex from the main program itself.
+//Process: Going through the unsold cars array, this function will check for the VIN that the user has inputted and if the VIN is found, then the sellIndex is given the value of the index
+//That the VIN was found at. If not, the user will be told that it was an incorrect input. After that, the sold car will be added to the soldCars array at the addIndex index
+//Then the sold car's location in the unsoldCars index is turned into an empty object.
+//Output: This function will display a sentence asking the user to input the VIN for the car they would like to sell and if that VIN couldn't be found, display a warning stating
+//that the car isn't available or was inputted incorrectly.
+
+void sellCar(Car unsoldCars[], Car soldCars[], int& addIndex) {
+   int sellIndex = 0;
+   int size = 10;
+   bool found = false;
+   Car emptyCar;
+   string vin = "";
+   cout << "Please enter the VIN of the car you wish to sell\n";
+   cin >> vin;
+   for (int i = 0; i < size; ++i) {
+      if (soldCars[i].getVin() == vin) {
+            sellIndex = i;
+            found = true;
+      }//end if statement. JK
+   }//end for statement. JK
+   if (! found) {
+      cout << "That car isn't available or was incorrectly entered!\n";
+   }//end if statement. JK
+   //call search inventory when it's finished. JK
+   if (addIndex <= 10) {
+      soldCars[addIndex] = unsoldCars[sellIndex];
+      ++addIndex;
+   }//end if statement. JK
+   unsoldCars[sellIndex] = emptyCar;
+}//end sellCar(). JK
