@@ -120,6 +120,7 @@ void searchInventory(Car list[]) {
     if (!found) {
         cout << "No cars found based on search" << endl;
     }//end if
+    cout << endl << endl; //Formatting
     //Function returns void 
     return;
 }// ends search function
